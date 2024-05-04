@@ -1,0 +1,29 @@
+name: 'Lint, Build, and Test'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [18, 20]
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn' # cache node modules
+          node-version: ${{ matrix.node }}
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn run sdk:lint # lint code
+      - run: yarn run sdk:build # compile typescript into javascript
+      - run: yarn run sdk:test:unit --silent --coverage # run unit tests
+      # - run: yarn run test:integrations # run integration tests tests

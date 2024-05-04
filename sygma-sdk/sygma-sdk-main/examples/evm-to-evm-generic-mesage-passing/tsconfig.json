@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"module": "CommonJS",
+		"allowJs": true,
+		"declaration": true,
+		"sourceMap": true,
+		"declarationMap": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"downlevelIteration": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"target": "ES2019"
+	},
+	"ts-node": {
+		"esm": false,
+		"experimentalSpecifierResolution": "node"
+	},
+	"include": [
+		"src"
+	]
+}
